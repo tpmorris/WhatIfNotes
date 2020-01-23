@@ -41,9 +41,9 @@ The description of standardisation is nice, though they don't seem to actually j
 
 ## Chapter 3 *Observational studies*
 
-In the vignette at the beginning of the chapter, they say 'in practice, the importance of randomised experiments for the estimation of causal effects is more limited'. I think this is an empirical statement, that people attempt causal inference from observational studies far more than randomised experiments and that this is often because they are studying things where you could not justify randomising.
+In the vignette at the beginning of the chapter, they say 'in practice, the importance of randomised experiments for the estimation of causal effects is more limited'. I think this is an empirical statement, that people attempt causal inference from observational studies far more than randomised experiments and that this is often because they are studying things where you could not justify (or afford) randomisation.
 
-3.1 Are they using *exchangeability* in the sense of full- or mean-? Can't remember what they said in the previous chapter!
+3.1 Are they using *exchangeability* in the sense of full- or mean-? I forget what they said in the previous chapter!
 
 3.1 Again, they introduce a phrase without explaining or justifying it. 'Well-defined-interventions'. I'd like to understand why this is used in their informal characterisation of an observational study as a randomised experiment. (Ok, they do go into it later on - signpost this?)
 
