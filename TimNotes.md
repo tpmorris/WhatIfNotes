@@ -4,6 +4,7 @@ Tim Morris ‘’
 ## General comments/gripes
 * Nothing on mediation(?)
 * I wish they would learn Latex properly! It's super hard to read some of the in-line equations, especially when they run across a line-break, hyperlinks would be helpful, and they appear to be using an odd version of Computer Moden/Latin Modern that does not render well on-screen.
+* They insist on always referring to unspecified people as 'she'/'her'/'he'/'him'. It seems to be a US thing to be uncomfortable with using 'they'/'them'.
 
 ## Introduction
 Interesting that they talk about 'when data are collected on each individual in a population' straight away. I guess this rules out many econometrics things that consider a different level (though actually many of the ideas in this book would I think apply to cluster level causalilty, e.g. the Greek Gods each representing a billion people; still, it's nice that they don't oversell the generality of their work).
@@ -80,6 +81,39 @@ Aah, the Zeus example on P33 is great for understanding why they are talking abo
 
 Fine point 3.3. The 'possible worlds' notion surely doesn't rely so much on the assumption of no interference. You can contrast a functional of the (possible) counterfactual distributions where interference occurs. (Was this part of *consistency* in ch 1?)
 
+3.5 The well-defined obesity intervention is interesting. The non-obese is well defined but the obese doesn't seem to be.
+
+P35 typo: 'implictily'
+
+Technical point 3.1 Again positivity is described as a probability but then discussed as data measure.
+
 [I didn't finish this chapter but plan to]
 
 ## Chapter 4 **
+
+4.1 Containts a heroic empirical statement: 'heterogeneity of the individual causal effects of treatment is often expected because of variations in individual susceptibilities to treatment'. I feel like this is written as though it's an empirical statement but is actually philosophical: How do we know that these individual susceptibilities exist? Surely that relies on being able to see counterfactual distributions.
+
+Important (I think) defn. to remember: 'We only consider variables V that are not affected by treatment A as effect modifiers.'
+
+4.2 The phrase 'one computes the causal effect' is the epitome of why the term 'causal effect' is ambiguous and unhelpful here. One computes an *estimate* – of a *causal estimand* using an *estimator*.
+
+4.2 'An ideal randomised experiment with conditional randomisation'. I mean, a conditionally randomised (in the sense used in this book) trial ain't ideal - oxymoron sentence!
+
+4.2 Referring back to table 2.2 is unhelpful here because you want to compare it to the new table (4.2).
+
+4.2 It wasn't explained why the procedure to estimate conditional risks involved stratification then standardisation. I'm tired and it's late so I would have liked it spelled out.
+
+4.2 I really liked the distinction between *surrogate effect modifier* and *causal effect modifier*. Though surrogate is an odd term; effectively this is a *confounded* effect modifier.
+
+Figure 4.1 Others have pointed this out, but the figures and tables contain no captions, and it's pretty weird to stumble across figure 4.1 like 'Uhm... what's this doing here? What does it mean?'
+
+4.3 'First, if a factor V modifies the effect of treatment A on the outcome Y then the average causal effect will differ between populations with different prevalence of V.' This is true if it's a causal effect modifier but no a surrogate. Suppose for example that the prevalence of V is identical in a target population and the prevalence of the thing V is a surrogate for differs.
+
+4.3 There is generally no such a thing as “the average causal effect of treatment A on outcome Y”, but “the average causal effect of treatment A on outcome Y in a population with a particular mix of causal effect modifiers.” I agree for most interpretible causal estimands but, to play devil's advocate, (without qualitative interaction) it could be argued that there is a scale on which the effect modification is 0; it's just not a scale people want to see summarised. That is, data could arise from a model with no effect modification but it appears to be present anyway.
+
+4.3 Note - in the sentence quoted above (from P 45) there is a typo: 'no such *a* thing as'.
+Also typo on P46 - 'trasported' should be 'transported'.
+
+4.3 Gosh, I can't believe this section is called 'model free'. Like, there are so many 'that's just, like, your opinion man' assumptions that correspond to parametric restrictions. Like 'Therefore, as a general rule, it is more informative to report the (absolute) counterfactual risks'. From what I've read of Rothman, he writes strong and unjustified things, so justifying stuff like this by citing him is a bit rich.
+
+Fine point 4.3 Oh look, more that's not model free! Here, they're arguing that non-collapsibility makes the odds ratio inappropriate as a causal estimand. Wrong! You can adjust and standardise to get a marginal odds ratio.
