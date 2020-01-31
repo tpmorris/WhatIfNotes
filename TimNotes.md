@@ -101,7 +101,7 @@ Important (I think) defn. to remember: 'We only consider variables V that are no
 
 4.2 Referring back to table 2.2 is unhelpful here because you want to compare it to the new table (4.2).
 
-4.2 It wasn't explained why the procedure to estimate conditional risks involved stratification then standardisation. I'm tired and it's late so I would have liked it spelled out.
+4.2 It wasn't explained why the procedure to estimate conditional risks involved stratification then standardisation. I'm tired and it's late so I would have liked it spelled out. Everyone was similarly confused by this. Clemence suggested that doing 2) then 1) would have implied no interaction between L and V, where the procedure defined does not impose this restriction.
 
 4.2 I really liked the distinction between *surrogate effect modifier* and *causal effect modifier*. Though surrogate is an odd term; effectively this is a *confounded* effect modifier.
 
@@ -117,3 +117,7 @@ Also typo on P46 - 'trasported' should be 'transported'.
 4.3 Gosh, I can't believe this section is called 'model free'. Like, there are so many 'that's just, like, your opinion man' assumptions that correspond to parametric restrictions. Like 'Therefore, as a general rule, it is more informative to report the (absolute) counterfactual risks'. From what I've read of Rothman, he writes strong and unjustified things, so justifying stuff like this by citing him is a bit rich.
 
 Fine point 4.3 Oh look, more that's not model free! Here, they're arguing that non-collapsibility makes the odds ratio inappropriate as a causal estimand. Wrong! You can adjust and standardise to get a marginal odds ratio.
+
+4.5 Why does ths subsection appear here? Doesn't appear to be related to effect modification and they don't talk about V. Same sort of thing in 4.6.
+
+Fine point 4.3 Ruth pointed out that in some cases the odds ratio *is* the risk ratio. For example, in a case-control study you don't have to sample controls; you sometimes take a random sample from a population and then write your logistic regression. The odd thing is, the 'controls' can contain cases. So your logistic regression is actually estimating a risk ratio (despite being logistic regression)!! OMG I've learned something!
