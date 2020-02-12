@@ -3,8 +3,9 @@ Tim Morris ‘’
 
 ## General comments/gripes
 * Nothing on mediation(?)
-* I wish they would learn Latex properly! It's super hard to read some of the in-line equations, especially when they run across a line-break, hyperlinks would be helpful, and they appear to be using an odd version of Computer Moden/Latin Modern that does not render well on-screen.
+* Someone needs to go through the .tex file and fix some things. Some of the in-line equations are hard to read, especially when they run across a line-break; hyperlinks would be helpful;  they appear to be using an odd version of Computer Moden/Latin Modern that renders poorly on-screen (looks like Scientific Word output).
 * They insist on always referring to unspecified people as 'she'/'her'/'he'/'him'. It seems to be a US thing to be uncomfortable with using 'they'/'them'.
+* Someone commented 'This book doesn't use two words when 10 will do!' It is pretty verbose and I find some of the language imprecise.
 
 ## Introduction
 Interesting that they talk about 'when data are collected on each individual in a population' straight away. I guess this rules out many econometrics things that consider a different level (though actually many of the ideas in this book would I think apply to cluster level causalilty, e.g. the Greek Gods each representing a billion people; still, it's nice that they don't oversell the generality of their work).
@@ -89,7 +90,7 @@ Technical point 3.1 Again positivity is described as a probability but then disc
 
 [I didn't finish this chapter but plan to]
 
-## Chapter 4 **
+## Chapter 4 *Effect modification*
 
 4.1 Containts a heroic empirical statement: 'heterogeneity of the individual causal effects of treatment is often expected because of variations in individual susceptibilities to treatment'. I feel like this is written as though it's an empirical statement but is actually philosophical: How do we know that these individual susceptibilities exist? Surely that relies on being able to see counterfactual distributions.
 
@@ -121,3 +122,46 @@ Fine point 4.3 Oh look, more that's not model free! Here, they're arguing that n
 4.5 Why does ths subsection appear here? Doesn't appear to be related to effect modification and they don't talk about V. Same sort of thing in 4.6.
 
 Fine point 4.3 Ruth pointed out that in some cases the odds ratio *is* the risk ratio. For example, in a case-control study you don't have to sample controls; you sometimes take a random sample from a population and then write your logistic regression. The odd thing is, the 'controls' can contain cases. So your logistic regression is actually estimating a risk ratio (despite being logistic regression)!! OMG I've learned something!
+
+## Chapter 5 *Interaction*
+
+I really didn't find any time to read this one.
+
+Discussion was generally very negative about the chapter. Overly verbose. Confusing. Couldn't tell what the practical implications are. But some interesting discussions on some of the other stuff from earlier chapters! Particularly positivity. Karla persuaded people that non-positivity is always an estimationn problem. If you have structural non-positivity, you have a poorly defined question and it's an identification problem. So by the time you get to 'data you could collect', it's always an estimation problem and a statistical issue.
+
+## Chapter 6 *Graphical representation of causal effects*
+
+This chapter is pretty well-trodden ground for those of us who have read about DAGs before. I preferred the way this was done in *Book of Why* e.g. the series of puzzles, but hey, it's clear here (and there were other infuriating things in *Book of Why*). Just a bit weird how they talk about so many things; it makes it harder to focus on any one (e.g. SWIG, FCISTG)
+
+'Causal DAGs are of no practical use unless we make an assumption linking the causal structure represented by the DAG to the data obtained in a study'. I suspect they mean this, but they are also of practical use for considering the structure of the data that might arise in studies of different designs e.g. 'If I designed a study in this way then my causal structure would look like DAG 1; if I designed it in that way then it would look like DAG 2. Can I estimate my estimand with either, just one or neither?'
+
+Technical point 6.1 the Markov factorisation formula switches without warning from random variables *V* to their realisations *v*. Is this intentional, i.e. linking to the data actually obtained from the study? If so, why write *V* previously?
+
+6.2 Typo in final sentence: says 'conditionally' and should say 'conditional'.
+
+6.3 Seems strange to use the word *predict* in 'when we already have information on B, does information about A improve our ability to predict Y?'
+
+6.3 Oh gosh I don't like the whole square-box convention to represent conditioning. Surely this is not a DAG any more? It was such a relief when Pearly didn't do this in *Book of Why*.
+
+6.3 Why are they talking about random variability as a source of association? They're going to say 'random confounding' later as a causal concept aren't they... ugh.
+
+6.4 I didn't follow the sentence 'Therefore, our choice of counterfactual theory in Chapters 1-5 did not really privilege one particular approach but only one particular notation.'
+
+6.4 'Regardless of the notation used...' Graphs don't have a way of encoding positivity, do they? In fact, they can have arrows where there is non-positivity (see https://twitter.com/JessGeraldYoung/status/1204403763341070336 where Jess Young told me these are necessary).
+
+Fine point 6.2 typo: I'm not sure what it was supposed to say but 'exist a setting represented by Figure 6' doesn't make sense. Is the word *exist* just there by mistake?
+
+6.5 'We say that there is systematic bias when the data are insufficient to identify -- compute -- the causal effect even with an infinite sample size.' Identifiability is not estimability and being able to compute an effect is an estimation (not estimability) problem! More foreshadowing that they're going to come in with something about non-systematic bias and probably random confounding. Ugh.
+
+6.5 Are they using 'consistency' in its statistical sense here or in the causal sense? Are they the actually the same thing? (They say that lack of [unconditional] bias implies consistency)
+
+6.5 I like the simple insight for d-separation that we get bias if we ignore a common cause or condition on a common effect.
+
+6.5 'Susceptibility to bias oof randomised experiments may not be obvious'. I mean, if you target an estimand that isn't identified through randomisation, this *is* very obvious. MSc students at LSHTM never have a problem identifying this.
+
+6.6 I like the optimism of the classification that 'everyone receives either high or normal quality of care', lol!
+
+6.6 Why is there so much about surrogate effect modification here? Is this making any new points?
+
+## Chapter 7 *Confounding*
+
