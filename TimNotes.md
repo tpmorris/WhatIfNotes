@@ -4,6 +4,7 @@ Tim Morris ‘’
 ## General comments/gripes
 * Nothing on mediation(?)
 * Someone needs to go through the .tex file and fix some things. Some of the in-line equations are hard to read, especially when they run across a line-break; hyperlinks would be helpful;  they appear to be using an odd version of Computer Moden/Latin Modern that renders poorly on-screen (looks like Scientific Word output).
+* Figures need to have captions! So many times you just want to flick back and can't remember which one you were thinking about.
 * They insist on always referring to unspecified people as 'she'/'her'/'he'/'him'. It seems to be a US thing to be uncomfortable with using 'they'/'them'.
 * Someone commented 'This book doesn't use two words when 10 will do!' It is pretty verbose and I find some of the language imprecise.
 
@@ -164,4 +165,6 @@ Fine point 6.2 typo: I'm not sure what it was supposed to say but 'exist a setti
 6.6 Why is there so much about surrogate effect modification here? Is this making any new points?
 
 ## Chapter 7 *Confounding*
+
+7.2 'requires adjustment for the variables *L* via standardisation or reweighting'. Why are they so married to these two? Why not just 'requires adjustment for the variables *L*'?
 
