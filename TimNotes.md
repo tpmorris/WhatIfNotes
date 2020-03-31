@@ -2,11 +2,14 @@
 Tim Morris ‘’
 
 ## General comments/gripes
-* Nothing on mediation(?)
-* Someone needs to go through the .tex file and fix some things. Some of the in-line equations are hard to read, especially when they run across a line-break; hyperlinks would be helpful;  they appear to be using an odd version of Computer Moden/Latin Modern that renders poorly on-screen (looks like Scientific Word output).
 * Figures need to have captions! So many times you just want to flick back and can't remember which one you were thinking about.
+* Nothing on mediation(?)
+* Slightly odd notation: always *A* for exposure and *L* for covariates and sometimes other things; most literature uses *Z* and *X* respectively, with *U* for something unmeasured.
+* Someone needs to go through the .tex file and fix some things. Some of the in-line equations are hard to read, especially when they run across a line-break; hyperlinks would be helpful;  they appear to be using an odd version of Computer Moden/Latin Modern that renders poorly on-screen (looks like Scientific Word output).
 * They insist on always referring to unspecified people as 'she'/'her'/'he'/'him'. It seems to be a US thing to be uncomfortable with using 'they'/'them'.
 * Someone commented 'This book doesn't use two words when 10 will do!' It is pretty verbose and I find some of the language imprecise.
+
+## First chunk of comments relate to Nov 2020 version
 
 ## Introduction
 Interesting that they talk about 'when data are collected on each individual in a population' straight away. I guess this rules out many econometrics things that consider a different level (though actually many of the ideas in this book would I think apply to cluster level causalilty, e.g. the Greek Gods each representing a billion people; still, it's nice that they don't oversell the generality of their work).
@@ -167,4 +170,92 @@ Fine point 6.2 typo: I'm not sure what it was supposed to say but 'exist a setti
 ## Chapter 7 *Confounding*
 
 7.2 'requires adjustment for the variables *L* via standardisation or reweighting'. Why are they so married to these two? Why not just 'requires adjustment for the variables *L*'?
+
+7.2 'The backdoor criterion does not answer questions regarding the magnitude or direction of confounding'. Causal graphs do not tell us about the magnitude or direction of anything, do they?
+
+Fine point 7.1 'Biases that are not large enough to affect the conclusions of the study may be safely ignored in practice'. This feels a bit of a cop-out, like saying 'we just want to know if there is any effect and which direction it goes in'.
+
+7.3 typo 'In such setting we define': *setting* should be *settings*
+
+7.5 I skipped SWIGs because they're a new idea to me, I'm tired and the kids are ill and waking up. Aim to come back to it later.
+
+7.6 There is a paragraph about a critic who says 'confounding' not having raised a criticism because 'all observational studies are subject to confounding'. I may habe misunderstood, but there are some situation where we have an 'observational' study but no unmeasured confouding. E.g. Sarah Walker's MSM analyses which were based on the fact that the reasons for decisions were always recorded and were always based on some also-recorded measurement. There is confounding but none unmeasured. So I regard the criticism that there may be unmeasured confounding as 'scientific' rather than 'logical' (as the authors put it).
+
+Technical point 7.3 typo: 'In practice. the method[...]' should be a comma after 'practice'.
+
+Technical point 7.3: isn't there a much shorter do-calculus version of this in the *Book of Why*?
+
+## Chapter 8 *Selection bias* (should be called *Conditioning bias*!)
+
+Starts off by calling a collider situation 'selection bias'. I wonder why not call it a collider bias? Hopefully I'll find out.
+
+Figures 8.4-8.6 are misaligned with the text that refers to them.
+
+Technical point 8.1 Oh dear. I was just smoothly going through this chapter until this point. Model-free, huh? It's not that HRs are so great; it's that, if you're goinng to criticise them, make sure you're not doing it in a straw-man way. This is confusing HR with period-specific RR and ignoring what they are. Ok, I won't rant here.
+
+8.4 I don't understand the thing 'If ignoring random variability bothers you'. They haven't ignored it; they've estimated an estimate and not tried to quantify the uncertainty.
+
+8.4 Why do they call missing data 'censoring'? This subsection starts off about complete case analysis, and here it doesn't matter whether it's censoring (a missing outcome) or just an unmeasured covariate. Fortunately they do come to the estimand if all data were observed.
+
+8.4 I like 'To eliminate selection bias for the effect of treatment A, we need to adjust for confounding for the effect of treatment C.' (Think about missing outcome Y in a trial where missingness depends on covariates *X* but not treatment *Z*.)
+
+In the discussion we talked about the term 'selection bias'. This is confusing because (as the authors note) many people use this term to describe who is selected into a study. We agreed that 'conditioning bias' would be a better title for this chapter!
+
+## Chapter 9 *Measurement bias*
+
+First few pages are basically contriving scenarios in which certain arrows exist (or not). E.g. retrospective recall of exposure where the outcome is dementia implies an arrow from Y to U_A.
+
+Typo: Fine point 9.1. The term *A–Y association* (and variants), it's not a compound adjective: should be an en-dash (–), not a hyphen (-).
+
+9.3 The first could be a sentence (we already know it well). I read it three times just to see if I was missing something new before realising it was a recap. Also not sure why they keep writing the causal risk ratio out rather than just stopping after writing 'causal risk ratio'. It's been said so many times already!
+
+9.3 'The particular choice of terminology–unmeasured confounding versus bias due to mismeasurement of the confounders–is irrelevant for practical purposes.' That's fine when we're thinking non-parametrically about identification. But in reality, it's not quite like an unmeasured confounder, is it? The fact that you can't block the back door path doesn't mean you can't partially/mostly block it.
+
+9.4 Ok, this section is a serious problem. Their premise seems to be that we want to know P(Y<sup>a=1</sup>=1)-P(Y<sup>a=0</sup>=1). This is misguided and all subsequent mistakes follow from this. In real trials, we are almost always interested (their notation) in P(Y<sup>z=1</sup>=1)-P(Y<sup>z=0</sup>=1). 'Pragmatic trials' are entirely predicated on this. To put it in terms of figure 9.1, the arrow is from A\*<-A to A\*->A. And A\* does not receive any arrows (though A may do). The point is that we want to know about the causal effect of the treatment decision (what the ICH E9 addendum calls the *treatment policy estimand*). We want to use the estimate of a causal effect to make decisions about treatment ('what is the causal effect of this decision *A\** on outcome?') E.g. if half of people adhere to the decision *z=1* and we want to make a decision about an intervention, the effect for *a=1* is not of interest. Now, if you start with their premise, that your estimand relates to the treatment actually received, everything they say is ok, but it's rarely relevant; it almost always relates to something abstract: essentially, it can't help with decision making. I wonder why they think 'we want' the effect of receiving treatment. This doesn't seem questioned or justified.
+
+Their thing about exclusion-restriction: I wonder what they would make of the pre-exposure prophylaxis trials, where they had one trial with an exmphatic result that was double-blind but were worried that, in the wild, knowledge of the efficacy of it would change behaviour: people who knew they were getting something effective would behave differently. The second trial was then open label and evaluated this. Apparently the authors would not view this as valid.
+
+Fine point 9.3 This is a good point. We talk about the intention to treat *principle* here, which relates better to the estimand. The point is that intention to treat as an estimand isn't 'who you include' but what you target. By saying 'pseudo ITT', it makes it seem as though ITT is about who you include.
+
+'Second, suppose the effects are monotonic'. In this example, ibuprofen alone is not equally effective. The strategy of ibuprofen-plus-handling of side-effect is equally effective. The question is, in this hypothetical trial, why was the 'easy palliation' not used? I'm utterly baffled by their logic!
+
+'Third' is again ridiculous. Why is it different for adverse events? Unless you know that you will adhere, the ITT adverse events are what you should be interested in (expectation under decision 1 vs. 0). Sure, when you know you adhere, you want to know about some adherence-based estimand, but not at the point that it actually matters i.e. when you are making a decision.
+
+## Comments from now are on the Feb 2020 version
+
+## Chapter 10 *Random variability*
+By this point I can safely assert that the book would be better without all the chapter prefaces about 'one's looking up'!
+
+10.1 Nice to see the word estimand appear! Thought it's a strange notion that the 'estimand' exists only when we have a sample from a population. To everyone else it is one of the two things they have previously referred to as 'causal effect'. In describing the example they write down the same formula \widehat{Pr}[Y=1|A=a] for both estimator and the estimate - this is confusing. The estimate is simply a number: 7/13.
+
+10.1 What is the point of the sentence 'More specifically, we say that 7/13 is a *point estimate*'? Is it just saying that it's not a *variance estimate*?
+
+10.1 There's this sentence: 'In the absence of systematic biases, statistical theory allows one to quantify this confidence in the form of a confidence interval around the point estimate.' This is nice and simply written but could mislead, e.g. consider post-selection inference.
+
+10.1 It's ambiguous whether the clause '(exact or large sample) standard error' means that these are two names for one thing or two alternative options. The latter is intended but you only know this if you already knew!
+
+10.1 They use the term *valid* is used to mean *confidence valid* rather than *randomisation valid*. Great to see what they mean stated though.
+
+10.1 I wonder why they define their use of *bias* as ability to centre a valid Wald interval rather than 'Unbiased means E[theta-hat]-theta=0?'
+
+10.3 typo - 10.3 scenario 1 is in italics and scenario 2 is roman.
+People struggled with the difference here. It makes sense to me but people kept getting stuck on 
+
+10.4 The discussion of the trial with a chance imbalance is a bit polemic. Clearly matters aren't as simple as they seem.
+
+## Chapter 11 *Why model?*
+Note -- I've started writing Stata scripts to go alongside my reading. I took the scripts from the website and made it a bit more 'stata-like' (I think the code authors are Sas users).
+However, Stata Press are willing to work with authors even where they are not publishing the book. Would be good for the authors to approach them.
+
+This chapter is good because it's more careful and less cavelier than previous ones (with minor exceptions). It also sets up well for the later chapters, e.g. will focus on assumed parametric models being correct. This understanding will help me not to get distracted in later chapters.
+
+11.1 That really took a long time to write what could have taken 2 sentences!
+
+11.2 This section is fine but it seems weird not to link it to some of the technical concepts of chapter 10.
+
+11.3 Interesting that they talk about non-parametric estimators in terms of restrictions on the functional form | observed values of *A*. 
+
+Fine point 11.2 'In frequentist statistical inference, probability is defined as frequency.' Errr... no it isn't. This needs correcting.
+
+Technical point 11.1 is nice.
 
