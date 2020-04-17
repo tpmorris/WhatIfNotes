@@ -1,94 +1,89 @@
-/***************************************************************
-Stata code for Causal Inference: What If by Miguel Hernan & Jamie Robins
-Date: 10/10/2019
-Author: Eleanor Murray 
-For errors contact: ejmurray@bu.edu
-***************************************************************/
+* Stata code for Causal Inference: What If by Miguel Hernan & Jamie Robins
+* Date: 10/10/2019
+* Author: Eleanor Murray 
+* For errors contact: ejmurray@bu.edu
+* Edited by Tim Morris | tim.morris@ucl.ac.uk | 15apr2020
 
-/***************************************************************
-PROGRAM 13.1
-Estimating the mean outcome within levels of treatment 
-and confounders: Data from NHEFS
-Section 13.2
-***************************************************************/
-clear
-use "nhefs.dta"
 
-*Estimate the the conditional mean outcome within strata of quitting smoking and covariates, among the uncensored*/
-glm wt82_71 qsmk sex race c.age##c.age ib(last).education c.smokeintensity##c.smokeintensity c.smokeyrs##c.smokeyrs ib(last).exercise ib(last).active c.wt71##c.wt71 qsmk##c.smokeintensity
-predict meanY
-summarize meanY
+* Script 13.1
+* Estimating the mean outcome within levels of treatment 
+* and confounders: Data from NHEFS
+* Section 13.2
+use "nhefs.dta", clear
 
-/*Look at the predicted value for subject ID = 24770*/
-list meanY if seqn == 24770
+* Estimate the the conditional mean outcome within strata of quitting smoking and covariates, among the uncensored
+regress wt82_71 qsmk sex race c.age##c.age ib(last).education c.smokeintensity##c.smokeintensity c.smokeyrs##c.smokeyrs ib(last).exercise ib(last).active c.wt71##c.wt71 qsmk##c.smokeintensity
+predict pred_wtchg
+summarize pred_wtchg
 
-/*Observed mean outcome for comparison */
+* List predicted value for subject ID = 24770
+list pred_wtchg if seqn == 24770
+
+* Observed mean outcome for comparison
 summarize wt82_71
 
 
-/***************************************************************
-PROGRAM 13.2
-Standardizing the mean outcome to the baseline confounders
-Data from Table 2.2
-Section 13.3
-****************************************************************/
+* Script 13.2
+* Standardizing the mean outcome to the distribution of L
+* Data from Table 2.2
+* Section 13.3
 
 clear
 input str10 ID L A Y
-"Rheia" 	0 0 0 
-"Kronos" 	0 0 1 
-"Demeter" 	0 0 0 
-"Hades" 	0 0 0 
-"Hestia" 	0 1 0 
-"Poseidon" 	0 1 0 
-"Hera"  	0 1 0 
-"Zeus" 		0 1 1 
-"Artemis" 	1 0 1
-"Apollo"	1 0 1
-"Leto"		1 0 0
-"Ares"		1 1 1
-"Athena"	1 1 1
-"Hephaestus" 1 1 1
-"Aphrodite" 1 1 1
-"Cyclope"	1 1 1
-"Persephone" 1 1 1
-"Hermes"	1 1 0
-"Hebe"		1 1 0
-"Dionysus"	1 1	0 
+    "Rheia" 	0 0 0 
+    "Kronos" 	0 0 1 
+    "Demeter" 	0 0 0 
+    "Hades" 	0 0 0 
+    "Hestia" 	0 1 0 
+    "Poseidon" 	0 1 0 
+    "Hera"  	0 1 0 
+    "Zeus" 		0 1 1 
+    "Artemis" 	1 0 1
+    "Apollo"	1 0 1
+    "Leto"		1 0 0
+    "Ares"		1 1 1
+    "Athena"	1 1 1
+    "Hephaestus" 1 1 1
+    "Aphrodite" 1 1 1
+    "Cyclope"	1 1 1
+    "Persephone" 1 1 1
+    "Hermes"	1 1 0
+    "Hebe"		1 1 0
+    "Dionysus"	1 1	0 
 end
 
-*i.Data set up for standardization: create 3 copies of each subject*
-*first, duplicate the dataset and create a variable 'interv' which indicates which copy is the duplicate (interv =1)
+* i.Data set up for standardization: create 3 copies of each subject*
+* first, duplicate the dataset and create a variable 'interv' which indicates which copy is the duplicate (interv =1)
 expand 2, generate(interv)
-*next, duplicate the original copy (interv = 0) again, and create another variable 'interv2' to indicate the copy
+* next, duplicate the original copy (interv = 0) again, and create another variable 'interv2' to indicate the copy
 expand 2 if interv == 0, generate(interv2)
-*now, change the value of 'interv' to -1 in one of the copies so that there are unique values of interv for each copy*
+* now, change the value of 'interv' to -1 in one of the copies so that there are unique values of interv for each copy*
 replace interv = -1  if interv2 ==1
 drop interv2 
-*check that the data has the structure you want: there should be 1566 people in each of the 3 levels of interv*
+* check that the data has the structure you want: there should be 1566 people in each of the 3 levels of interv*
 tab interv
-*two of the copies will be for computing the standardized result*
-*for these two copies (interv = 0 and interv = 1), set the outcome to missing and force qsmk to either 0 or 1, respectively*
-*you may need to edit this part of the code for your outcome and exposure variables*
+* two of the copies will be for computing the standardized result*
+* for these two copies (interv = 0 and interv = 1), set the outcome to missing and force qsmk to either 0 or 1, respectively*
+* you may need to edit this part of the code for your outcome and exposure variables*
 replace Y = . if interv != -1
 replace A = 0 if interv == 0
 replace A = 1 if interv == 1
-*check that the data has the structure you want: for interv = -1, some people quit and some do not; for interv = 0 or 1, noone quits or everyone quits, respectively*
+* check that the data has the structure you want: for interv = -1, some people quit and some do not; for interv = 0 or 1, noone quits or everyone quits, respectively*
 by interv, sort: summarize A
 
-*ii.Estimation in original sample*
-*Now, we do a parametric regression with the covariates we want to adjust for*
-*You may need to edit this part of the code for the variables you want.*
-*Because the copies have missing Y, this will only run the regression in the original copy*
-*The double hash between A & L creates a regression model with A and L and a product term between A and L*
+* ii.Estimation in original sample*
+* Now, we do a parametric regression with the covariates we want to adjust for*
+* You may need to edit this part of the code for the variables you want.*
+* Because the copies have missing Y, this will only run the regression in the original copy*
+* The double hash between A & L creates a regression model with A and L and a product term between A and L*
 regress Y A##L
-*Ask Stata for expected values - Stata will give you expected values for all copies, not just the original ones*
+* Ask Stata for expected values - Stata will give you expected values for all copies, not just the original ones*
 predict predY, xb
-*Now ask for a summary of these values by intervention*
-*These are the standardized outcome estimates: you can subtract them to get the standardized difference*
+* Now ask for a summary of these values by intervention*
+* These are the standardized outcome estimates: you can subtract them to get the standardized difference*
 by interv, sort: summarize predY
 
-*iii.OPTIONAL: Output standardized point estimates and difference*
+* iii.OPTIONAL: Output standardized point estimates and difference*
 *The summary from the last command gives you the standardized estimates*
 *We can stop there, or we can ask Stata to calculate the standardized difference and display all the results in a simple table*
 *The code below can be used as-is without changing any variable names*
@@ -188,7 +183,7 @@ Section 13.3
 
 *drop the copies*
 drop if interv != -1
-gen meanY_b =.
+gen meanY_b = .
 save nhefs_std, replace
 capture program drop bootstdz
 program define bootstdz, rclass

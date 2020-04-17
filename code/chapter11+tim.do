@@ -7,6 +7,7 @@
 * Script 11.1 
 * Figures 11.1, 11.2, and 11.3
 * Sample means by treatment level
+version 16
 clear *
 
 * Figure 11.1

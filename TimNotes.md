@@ -4,10 +4,11 @@ Tim Morris ‘’
 ## General comments/gripes
 * Figures need to have captions! So many times you just want to flick back and can't remember which one you were thinking about.
 * Nothing on mediation(?)
-* Slightly odd notation: always *A* for exposure and *L* for covariates and sometimes other things; most literature uses *Z* and *X* respectively, with *U* for something unmeasured.
+* Slightly odd notation: always *A* for exposure and *L* for covariates and sometimes other things; most literature I've ever seen uses *Z* and *X* respectively, with *U* for something unmeasured.
 * Someone needs to go through the .tex file and fix some things. Some of the in-line equations are hard to read, especially when they run across a line-break; hyperlinks would be helpful;  they appear to be using an odd version of Computer Moden/Latin Modern that renders poorly on-screen (looks like Scientific Word output).
+* *Scripts* are referred to as *programs* throughout. It's not ambiguous but is wrong and will annoy people who actually write code.
 * They insist on always referring to unspecified people as 'she'/'her'/'he'/'him'. It seems to be a US thing to be uncomfortable with using 'they'/'them'.
-* Someone commented 'This book doesn't use two words when 10 will do!' It is pretty verbose and I find some of the language imprecise.
+* Someone (anon) commented 'This book doesn't use two words when 10 will do!' It is pretty verbose and repetitive and lots of the language imprecise.
 
 ## First chunk of comments relate to Nov 2020 version
 
@@ -255,7 +256,32 @@ This chapter is good because it's more careful and less cavelier than previous o
 
 11.3 Interesting that they talk about non-parametric estimators in terms of restrictions on the functional form | observed values of *A*. 
 
-Fine point 11.2 'In frequentist statistical inference, probability is defined as frequency.' Errr... no it isn't. This needs correcting.
+Fine point 11.2 'In frequentist statistical inference, probability is defined as frequency.' Errr... why would they say this? In freqentist inference, probability isn't about the intervals. They just need to say that confidence/compatibilty intervals are interpretable as a frequency.
 
 Technical point 11.1 is nice.
+
+## Chapter 12 *IP weighting and marginal structural models*
+
+12.1 Uh-oh, looks like they're going to do change rather than baseline adjustment. Surely not.
+
+12.1 The counterfactual superscript is written as *a=1*; I think that should say *A=1* (since lowercase *a* is a realisation).
+
+12.2 Calling the weighted model 'saturated' feel disingenuous here. Consider the standardisation analogy. Then the mean function for confounders is clearly not saturated in their terms.
+
+12.2 They don't explain the point about over-coverage of the robust variance estimator. I tried it using `teffects` in Stata and got a tighter confidence interval than they did in the book, (2.5, 4.4) rather than (2.4, 4.5), so I don't think that's what they mean. Saying 'use bootstrap because not all software does variance estimation right for all models' seems odd advice.
+
+12.3 It says 'heuristically, in the pseudo-population all individuals are included both under treatment and under no treatment'. I don't find this helps with intuition. They don't get counted twice by the estimator, do they? Surely it's clearer to say that we deliberately constructed a pseudo-population in which each individual has an equal probability (0.5) of treatment (or are there estimators that construct a pseudo-population in which everyone has the same Pr(Z) not equal to 0.5?).
+
+12.3 Using stabilised weights, they estimate weight gain is 3.4(2.4,3.5); I get 3.5(2.5,3.5) – this is not my code, it's the code being distributed with the book. Straight after this, there's a sentence 'This is the same estimate we obtained earlier using the nonstabilized IP weights *W^a* than the stabilized IP weights *SW^a*'. I was confused by this. I think they just mean 'This is the same estimate we obtained earlier using the nonstabilized IP weights' (the estimate here *is* that based on the stabilised weights).
+
+12.4 I didn't follow their distinction between 'IPW' and 'a marginal structural model'. Anyone?
+
+12.4 I cannot believe there could be any ambiguity in simply writing '*a*<sup>2</sup>' rather than '*a*<sup>2</sup> = *a* × *a* is *a*-squared'.
+
+## Chapter 13 *Standardisation and the parametric G-formula*
+Nice statement that IPTW and standardisation 'are based on the same identifiability conditions, but on different modeling assumptions.' I feel like I've heard people say IPTW has some identification advantage but now can't recall details (something to do with colliders).
+
+13.1 It's funny that they talk about standardisation as providing a consistent estimator of the mean outcome in the treated and then of the mean outcome in the untreated. Most trials people would argue that neither is relevant except that in combination this is a sufficient (but not necessary) condition for the contrast to be consistent.
+
+13.1 It's weird to spend so much time on standardisation without explaining the point that the *Pr[L=l]* part doesn't actually come into things for many models e.g. linear, log- or identity-binomial GLMs. It's only when the model used produces a non-collapsible effect summary and we want something marginal that the sum/integral becomes important for the contrast of interest (e.g. when we fit logistic regression but want a marginal OR, RR or RD).
 
