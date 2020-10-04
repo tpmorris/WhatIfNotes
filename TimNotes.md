@@ -9,12 +9,12 @@ Comments below simply follow our reading of the book and should refer to the por
 
 * Figures need to have captions! So many times you just want to flick back and can't remember which one you were thinking about because there is no caption.
 * Nothing on mediation. We wondered why.
-* To some of us, the notation is odd: always *A* for exposure and *L* for covariates and sometimes other things; most literature I've ever seen uses *Z* and *X* to denote exposure and covariate/s respectively, with *U* for something unmeasured. However, I think *A* and *L* is a well established convention.
+* To some of us, the notation is odd: always $A$ for exposure and $L$ for covariates and sometimes other things; most literature I've read uses $Z$ and $X$ to denote exposure and covariate/s respectively, with $U$ for something unmeasured. However, I think $A$ and $L$ is a well established convention.
 * Some of the in-line equations are hard to read, especially when they run across a line-break; hyperlinks would be helpful; appears to use an odd version of Computer Moden/Latin Modern that renders poorly on-screen (looks like Scientific Word output).
 * *Scripts* are referred to as *programs* throughout. It's not ambiguous but is wrong and may annoy programmers.
 * Stata Press are willing to work with authors even where they are not publishing the book. Would be good for the authors to approach them as the Stata code is not Stata-like at all and will confuse Stata users.
 * They always refer to unspecified people as 'she'/'her'/'he'/'him'. It seems to be a US thing to be uncomfortable with just using 'they'/'them' for a notional person whose pronouns don't matter for the example.
-* Someone (anon) commented 'This book doesn't use two words when 10 will do!' It is pretty verbose. I found this distracting because, once you have got the point, you want to get past it.
+* Someone (anon) commented 'This book doesn't use two words when 10 will do!' It is pretty verbose. I found this distracting because, once you have got the point, you want to get past it. Presumably it is not primarily targeted at readers like us.
 
 ## First chunk of comments relate to Nov 2020 version
 
@@ -127,11 +127,11 @@ Figure 4.1 Others have pointed this out, but the figures and tables contain no c
 4.3 Note - in the sentence quoted above (from P45) there is a typo: 'no such *a* thing as'.
 Also typo on P46 - 'trasported' should be 'transported'.
 
-4.3 I'm surprised this section is called 'model free'. It seems a very blurry line. There are many 'that's just, like, your opinion man' assumptions that correspond to restrictions on parametric or semi-parametric models. Example: 'Therefore, as a general rule, it is more informative to report the (absolute) counterfactual risks'. Rothman tends to write strong and unjustified things so I don't believe it when I see that cited.
+4.3 I'm surprised this section is called 'model free'. It seems a very blurry line. There are many 'that's just, like, your opinion man' assumptions that correspond to restrictions on parametric or semi-parametric models. Example: 'Therefore, as a general rule, it is more informative to report the (absolute) counterfactual risks'. Rothman tends to write strong things like this as rules without justifying/explaining (from the couple of papers I've read) so I don't believe it when I see that cited.
 
 Fine point 4.3 That's not model free! They imply that non-collapsibility makes the odds ratio inappropriate as a causal estimand. But you can adjust and standardise to get a marginal odds ratio.
 
-We had an interesting discussion about odds ratios here. Senn has this blistering comment ([Rare Distinction and Common Fallacy](https://www.bmj.com/rapid-response/2011/10/27/rare-distinction-and-common-fallacy)) on why risk ratios are only useful as an approximation to the odds ratio. The main point is that risks only count events, while odds count events and non-events. The interesting thing is, this is exactly why people who think in proportions dislike odds: one event changes both the numerator and the denominator. The odds is in itself a relative, not absolute, measure. So, a taxonomy:
+We had an interesting discussion about odds ratios here. Senn has this blistering comment ([Rare Distinction and Common Fallacy](https://www.bmj.com/rapid-response/2011/10/27/rare-distinction-and-common-fallacy)) on why risk ratios are only useful as an approximation to the odds ratio. The main point is that risks only count events, while odds count events and non-events. The interesting thing is, this is exactly why people who think in proportions dislike odds: one event changes both the numerator and the denominator. The odds is in itself a relative, not absolute, measure. But it's funny how folks are happy to write things like '1:1 allocation' rather than '1/2 allocation'. So, a taxonomy:
 
 - Risk difference is an absolute contrast of absolute measures
 
@@ -153,27 +153,27 @@ The group discussion was generally very negative about the chapter. Verbose but 
 
 ## Chapter 6 *Graphical representation of causal effects*
 
-The bit on causal DAGs well-trodden ground for those of us who have read about DAGs before. We preferred the way this was done in *Book of Why* with the series of fun puzzles, but hey, it's clear here (and there were many infuriating things in *Book of Why*). Just a bit weird how they talk about so many things; it makes it harder to focus on any one (e.g. SWIG, FCISTG)
+The bit on causal DAGs well-trodden ground for those of us who have read about them before. We preferred the way this was done in *Book of Why* with the series of fun puzzles, but hey, it's clear here (and there were many infuriating things in *Book of Why*). Just a bit weird how they talk about so many things; it makes it harder to focus on any one (e.g. SWIG, FCISTG).
 
-'Causal DAGs are of no practical use unless we make an assumption linking the causal structure represented by the DAG to the data obtained in a study'. I suspect the authors would agree that causal DAGs are also of practical use for considering the structure of the data that *might* arise in studies of different designs e.g. 'If I designed a study in this way then my causal structure would look like DAG 1; if I designed it in that way then it would look like DAG 2. Can I estimate my estimand with either study, just one of them or neither?'
+'Causal DAGs are of no practical use unless we make an assumption linking the causal structure represented by the DAG to the data obtained in a study'. I suspect the authors would agree that causal DAGs are also of practical use for considering possible hypothetical studies of different designs e.g. 'If I designed a study in this way then my causal structure would look like DAG 1; if I designed it in that way then it would look like DAG 2. Can I estimate my estimand with either study, just one of them or neither?'
 
 Technical point 6.1 the Markov factorisation formula switches without warning from random variables $V$ to their realisations $v$. Is this intentional, i.e. linking to the data actually obtained from the study? If so, why write $V$ previously? Actually I notice now that this has happened earlier e.g. $Y^{a=1}$
 
-6.2 Typo in final sentence: says 'conditionally' and should say 'conditional'.
+6.2 Typo in final sentence: says 'conditionally'; should say 'conditional'.
 
 6.3 Seems strange to use the word *predict* in 'when we already have information on $B$, does information about $A$ improve our ability to predict $Y$?'
 
 6.3 Oh gosh I don't like the whole square-box convention to represent conditioning. Surely this is not a DAG any more? It was a relief when Pearl didn't do this in *Book of Why*.
 
-6.3 Why are they talking about random variability as a source of association? They're going to say 'random confounding' later as a causal concept aren't they...
+6.3 Why are they talking about random variability as a source of association? They're going to say 'random confounding' later as a causal concept aren't they…
 
 6.4 I didn't follow the sentence 'Therefore, our choice of counterfactual theory in Chapters 1–5 did not really privilege one particular approach but only one particular notation.'
 
-6.4 'Regardless of the notation used...' Graphs don't have a way of encoding positivity, do they? In fact, they can have arrows where there is non-positivity (see [here](https://twitter.com/JessGeraldYoung/status/1204403763341070336) where Young told me these are necessary).
+6.4 'Regardless of the notation used…' Graphs don't have a way of encoding positivity, do they? In fact, they can have arrows where there is non-positivity (see [here](https://twitter.com/JessGeraldYoung/status/1204403763341070336) where Young told me these are necessary).
 
 Fine point 6.2 typo: I'm not sure what it was supposed to say but 'exist a setting represented by Figure 6' doesn't make sense. Is the word *exist* there by mistake?
 
-6.5 'We say that there is systematic bias when the data are insufficient to identify -- compute -- the causal effect even with an infinite sample size.' Identifiability is not estimability and being able to compute an effect is surely an estimation (not estimability) problem! Is this going to end up as something about 'random confounding'?
+6.5 'We say that there is systematic bias when the data are insufficient to identify – compute – the causal effect even with an infinite sample size.' Identifiability is not estimability and being able to compute an effect is surely an estimation (not estimability) problem! Is this going to end up as something about 'random confounding'?
 
 6.5 Are they using 'consistency' here in its statistical sense or in the causal sense described earlier? Are they the actually related? (They say that lack of [unconditional] bias implies consistency)
 
@@ -265,11 +265,9 @@ By this point I can safely assert that the book would be better without all the 
 
 ## Chapter 11 *Why model?*
 
-Note -- I've started writing Stata scripts to go alongside my reading. I took the scripts from the website and made it a bit more 'stata-like' (I think the code authors must be Sas users).
+Note -- I've started writing Stata scripts to go alongside my reading. I took the scripts from the website and made it a bit more 'stata-like' (I think the code authors must be Sas users). Stata Press are willing to work with authors even where they are not publishing the book (they've offered this for our book). Would be good for the authors to approach them for help!
 
-However, Stata Press are willing to work with authors even where they are not publishing the book. Would be good for the authors to approach them.
-
-This chapter is good because it's more careful and less cavelier than previous ones (with minor exceptions). It also sets up well for the later chapters, e.g. will focus on assumed parametric models being correct. This understanding will help me not to get distracted in later chapters.
+This chapter is good because it feels more careful and less cavelier than previous ones (with minor exceptions). It also sets up well for the later chapters, e.g. will focus on assumed parametric models being correct. This understanding will help me not to get distracted in later chapters.
 
 11.1 That really took a long time to write what could have taken 2 sentences!
 
@@ -303,6 +301,8 @@ This is a nice chapter and helped with things I was thinking about.
 
 ## Chapter 13 *Standardisation and the parametric G-formula*
 
+Another chapter I liked and that helped me with thinking about a paper.
+
 Nice statement that IPTW and standardisation 'are based on the same identifiability conditions, but on different modeling assumptions.' I feel like I've heard people say IPTW has some identification advantage but now can't recall details (something to do with colliders perhaps).
 
 13.1 It's funny that they talk about standardisation as providing a consistent estimator of the mean outcome in the treated and then of the mean outcome in the untreated. Most trials people would argue that neither is relevant except that in combination this is a sufficient (but not necessary) condition for a *contrast* to be consistent. 
@@ -317,7 +317,7 @@ Table 12.2 Weird way to explain it. Why not just describe it as a single dataset
 
 ## Chapter 14 *G-estimation of structural nested models*
 
-14.1 This seems a bit of a long and pointless section. 'Can I have that bit of my life back please?'
+14.1 This seems a bit of a long-winded section.
 
 14.3 What does 'effect-*measure* modification' mean? Effect modification on the scale of the chosen summary?
 
