@@ -30,7 +30,7 @@ I *think* they make no distinction between potential outcomes and counterfactual
 
 Note that they use some fairly different language to what we use (When I say *we*, I wonder what I actually mean. The clinical trials community? UK/European medical research?). They use *causal effect* in the sense that the rest of us use *causal estimand*. They later use *estimand* in the statistical sense of 'the true value of a parameter'.) *Effect* is apparently less ambiguous than it is to us. I have criticised this term because it's a bit of a wild-card term for estima-; that is, it can mean *estimand* or *estimate*, and every now and then *estimator*.
 
-Why I wonder is the convention that people write down the estimand for an avg. causal effect as $E[Y^1]–E[Y^0]$ (*i.e.* a difference rather than just some contrast )? I would prefer to write it as 'a causal estimand is some contrast of $E(Y^1),E(Y^0)$ (marginal estimand) or $E(Y^1|X=x),E(Y^0|X=x)$ (conditional estimand). Is the '$-$' symbol just less mathy/intimidating, even though it doesn't explicitly mean a difference? Probably worth a fine point.
+Why I wonder is the convention that people write down the estimand for an avg. causal effect as $E[Y^1]-E[Y^0]$ (*i.e.* a difference rather than just some contrast )? I would prefer to write it as 'a causal estimand is some contrast of $E(Y^1),E(Y^0)$ (marginal estimand) or $E(Y^1|X=x),E(Y^0|X=x)$ (conditional estimand). Is the '$-$' symbol just less mathy/intimidating, even though it doesn't explicitly mean a difference? Probably worth a fine point.
 
 Potential outcomes for the Greek Gods example are written as deterministic. This means that the individual causal effects are (–1, 0, 1). They talk later about these being stochastic, with each person's PO being a realisation from a distribution. We liked this.
 
@@ -42,9 +42,9 @@ The definition in technical point 1.1 permits the HR as a population causal effe
 
 ## Chapter 2 *Randomised experiments*
 
-This chapter starts with a mention of randomised trials but then goes into 'conditionally-randomised experiments' as a way to talk about exchangeability, standardisation and IPW. I like much of what they say but it's a very weird chapter title!
+This chapter starts with a mention of randomised trials but then goes into ‘conditionally-randomised experiments’ as a way to talk about exchangeability, standardisation and IPW. I like much of what they say but it’s a very weird chapter title!
 
-The description of an *ideal randomized exeriment* says 'full adherence to the assigned treatment over the duration of the study'. Me: *Ideal to whom!* lol.
+The description of an *ideal randomized exeriment* says ‘full adherence to the assigned treatment over the duration of the study’. Me: *Ideal to whom!* lol.
 
 I really like the 'imagine what would have happened if the research assistants had misinterpreted our instructions'. This is a *great* way to explain exchangeability. Also nice to have the brief $Y^a$ independent of $A$ for all $a$'.
 
